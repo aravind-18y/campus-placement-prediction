@@ -1,303 +1,167 @@
-*{
+/* --- Reset & Variables --- */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.main{
+:root {
+    --primary-orange: #ff6b00;
+    --accent-yellow: #ffb800;
+    --success-cyan: #00f2fe;
+    --text-light: #ffffff;
+    --text-muted: #d1d5db;
+    --glass-bg: rgba(15, 23, 42, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    font-family: var(--font-body);
+    background-color: #0f172a;
+    color: var(--text-light);
+}
+
+/* --- Main Background Setup --- */
+.main-wrapper {
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url('../images/img.png');
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-}
-
-.navbar{
-    width: 1200px;
-    height: 75px;
-    margin: auto;
-}
-
-.icon{
-    width: 200px;
-    float: left;
-    height: 70px;
-}
-
-.logo{
-    color: #ff7200;
-    font-size: 35px;
-    font-family: Arial;
-    padding-left: 20px;
-    float: left;
-    padding-top: 10px;
-    margin-top: 5px
-}
-
-.menu{
-    width: 400px;
-    float: left;
-    height: 70px;
-}
-
-ul{
-    float: left;
+    min-height: 100vh;
+    /* Matches the dark gradient overlay from previous pages */
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(0, 0, 0, 0.9)),
+                url('../images/img.png') center/cover no-repeat fixed;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
-ul li{
-    list-style: none;
-    margin-left: 62px;
-    margin-top: 27px;
-    font-size: 14px;
+.container {
+    max-width: 700px;
+    width: 100%;
+    animation: fadeUp 0.8s ease-out forwards;
 }
 
-ul li a{
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial;
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-ul li a:hover{
-    color: #ff7200;
+/* --- Header Styling --- */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.search{
-    width: 330px;
-    float: left;
-    margin-left: 270px;
+.page-header h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-light);
 }
 
-.srch{
-    font-family: 'Times New Roman';
-    width: 200px;
-    height: 40px;
-    background: transparent;
-    border: 1px solid #ff7200;
-    margin-top: 13px;
-    color: #fff;
-    border-right: none;
-    font-size: 16px;
-    float: left;
-    padding: 10px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+.page-header h1 .highlight {
+    background: linear-gradient(90deg, var(--primary-orange), var(--accent-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 20px rgba(255, 107, 0, 0.3);
 }
 
-.btn{
-    width: 100px;
-    height: 40px;
-    background: #ff7200;
-    border: 2px solid #ff7200;
-    margin-top: 13px;
-    color: #fff;
-    font-size: 15px;
-    border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition: 0.2s ease;
-    cursor: pointer;
-}
-.btn:hover{
-    color: #000;
-}
-
-.btn:focus{
-    outline: none;
-}
-
-.srch:focus{
-    outline: none;
-}
-
-.content{
-    width: 1200px;
-    height: auto;
-    margin: auto;
-    color: #fff;
+/* --- Glassmorphism Result Card --- */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
-.content .par{
-    padding-left: 20px;
-    padding-bottom: 25px;
-    font-family: Arial;
-    font-size: 20px;
-    letter-spacing: 1.2px;
-    line-height: 30px;
-    margin-top: 9%;
-}
-
-.content h1{
-    font-family: 'Times New Roman';
-    font-size: 50px;
-    padding-left: 20px;
-    margin-top: 9%;
-    letter-spacing: 2px;
-}
-
-.content .cn{
-    width: 160px;
-    height: 40px;
-    background: #ff7200;
-    border: none;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .4s ease;
-    
-}
-
-.content .cn a{
-    text-decoration: none;
-    color: #000;
-    transition: .3s ease;
-}
-
-.cn:hover{
-    background-color: #fff;
-}
-
-.content span{
-    color: #ff7200;
-    font-size: 65px
-}
-
-.con{
-    width: 800px;
-    height: auto;
-    margin: auto;
-    color: #fff;
-    position:absolute;
-    padding-bottom: 10px;
-    justify-content: center;
-}
-
-
-.form{
-    width: 250px;
-    height: 380px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+/* Subtle glowing accent line at the top of the card */
+.glass-panel::before {
+    content: '';
     position: absolute;
-    top: -20px;
-    left: 870px;
-    transform: translate(0%,-5%);
-    border-radius: 10px;
-    padding: 25px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-orange), var(--accent-yellow));
 }
 
-.form h2{
-    width: 220px;
-    font-family: sans-serif;
-    text-align: center;
-    color: #ff7200;
-    font-size: 22px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin: 2px;
-    padding: 8px;
-}
-
-.form input{
-    width: 240px;
-    height: 35px;
-    background: transparent;
-    border-bottom: 1px solid #ff7200;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    color: #fff;
-    font-size: 15px;
+.glass-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--text-muted);
     letter-spacing: 1px;
-    margin-top: 30px;
-    font-family: sans-serif;
+    text-transform: uppercase;
 }
 
-.form input:focus{
-    outline: none;
+/* --- Output Text Styling --- */
+.output {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-::placeholder{
-    color: #fff;
-    font-family: Arial;
+.status {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--success-cyan);
+    margin-bottom: 15px;
+    line-height: 1.3;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
 }
 
-.btnn{
-    width: 240px;
-    height: 40px;
-    background: #ff7200;
-    border: none;
-    margin-top: 30px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: #fff;
-    transition: 0.4s ease;
+.salary {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent-yellow);
+    letter-spacing: 0.5px;
 }
-.btnn:hover{
-    background: #fff;
-    color: #ff7200;
-}
-.btnn a{
+
+/* --- Call to Action Button --- */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+    background: linear-gradient(135deg, var(--primary-orange), var(--accent-yellow));
+    color: #111;
+    padding: 15px 40px;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-back:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 107, 0, 0.4);
     color: #000;
-    font-weight: bold;
 }
-.form .link{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    padding-top: 20px;
-    text-align: center;
-}
-.form .link a{
-    text-decoration: none;
-    color: #ff7200;
-}
-.liw{
-    padding-top: 15px;
-    padding-bottom: 10px;
-    text-align: center;
-}
-.icons a{
-    text-decoration: none;
-    color: #fff;
-}
-.icons ion-icon{
-    color: #fff;
-    font-size: 30px;
-    padding-left: 14px;
-    padding-top: 5px;
-    transition: 0.3s ease;
-}
-.icons ion-icon:hover{
-    color: #ff7200;
-}
-.container{
-    max-width:700px;
-    width:100%;
-    padding:25px 30px;
-    border-radius:25px;
 
-}
-.container .heading{
-    font-size:25px;
-    font-weight:500;
-    position:relative;
-    text-align:centre;
-    padding:0 0 25px 0;
-
-
-}
-.container .heading{
-    content:'';
-    position:absolute;
-    height:3px;
-    left:0;
-    bottom:0;
-    width:100%;
-    
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    .page-header h1 { font-size: 2.2rem; }
+    .glass-panel { padding: 35px 20px; }
+    .glass-panel h2 { font-size: 1.4rem; }
+    .output { padding: 20px; }
+    .status { font-size: 1.8rem; }
+    .salary { font-size: 1.2rem; }
+    .btn-back { width: 100%; }
 }

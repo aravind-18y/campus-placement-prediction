@@ -5,25 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placement Prediction Result</title>
+    <!-- Modern Font Stack -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Placement Prediction Result</h1>
-        </header>
+    <div class="main-wrapper">
+        <div class="container">
+            <header class="page-header">
+                <h1>Prediction <span class="highlight">Result</span></h1>
+            </header>
 
-        <main>
-            <div class="result-card">
-                <h2>Prediction Outcome</h2>
-                <div class="output">
-                    <p class="status">{{ output }}</p>
-                    <p class="salary">{{ output2 }}</p>
+            <main>
+                <div class="result-card glass-panel">
+                    <h2>AI Outcome Analysis</h2>
+                    
+                    <div class="output">
+                        <!-- Your dynamic Flask variables remain completely untouched -->
+                        <p class="status">{{ output }}</p>
+                        <p class="salary">{{ output2 }}</p>
+                    </div>
+                    
+                    <a href="/index" class="btn-back">Predict Again</a>
                 </div>
-                <a href="/index" class="btn-back">Predict Again</a>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 </body>
 </html>

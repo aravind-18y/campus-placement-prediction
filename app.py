@@ -2,9 +2,19 @@ import numpy as np
 from flask import Flask, request, render_template
 import pickle
 app = Flask(__name__, template_folder="templates")
-model = pickle.load(open('model.pkl', 'rb'))
-model1 = pickle.load(open('model1.pkl', 'rb'))
 
+# Patch for sklearn version mismatch
+def _patch_sklearn_model(model):
+    if hasattr(model, 'estimators_'):
+        for est in model.estimators_:
+            if not hasattr(est, 'monotonic_cst'):
+                est.monotonic_cst = None
+    if not hasattr(model, 'monotonic_cst'):
+        model.monotonic_cst = None
+    return model
+
+model  = _patch_sklearn_model(pickle.load(open('model.pkl', 'rb')))
+model1 = _patch_sklearn_model(pickle.load(open('model1.pkl', 'rb')))
 
 @app.route('/')
 def h():
@@ -77,7 +87,7 @@ def predict():
     #        Internship, Hackathon, 12th %, 10th %, backlogs, (extra 0 for unused column)
     arr = np.array([[float(cgpa), int(projects), int(workshops), int(mini_projects),
                      s, float(communication_skills), internship, hackathon,
-                     float(tw_percentage), float(te_percentage), int(backlogs), 0]])
+                     float(tw_percentage), float(te_percentage), int(backlogs)]])
     output = model.predict(arr)
 
     # Determine placement status (1 = Placed, 0 = NotPlaced) for salary model
@@ -91,7 +101,7 @@ def predict():
     #        Internship, Hackathon, 12th %, 10th %, backlogs, PlacementStatus
     arr1 = np.array([[float(cgpa), int(projects), int(workshops), int(mini_projects),
                       s, float(communication_skills), internship, hackathon,
-                      float(tw_percentage), float(te_percentage), int(backlogs), p]])
+                      float(tw_percentage), float(te_percentage), int(backlogs),p]])
     salary = model1.predict(arr1)
     salary_value = abs(int(round(salary[0])))
 

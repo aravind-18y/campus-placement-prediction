@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLACEMENT PREDICTION</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style3.css') }}"
-    />
+    <!-- Added Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}">
 </head>
 <body>
 
     <div class="main">
-        <div class="navbar">
+        <!-- Changed to a <nav> semantic tag -->
+        <nav class="navbar">
             <div class="icon">
                 <h2 class="logo">PLACEMENT PREDICTION</h2>
             </div>
@@ -21,24 +21,20 @@
                 <ul>
                     <li><a href="/">HOME</a></li>
                     <li><a href="/about">ABOUT</a></li>
-                    
                 </ul>
             </div>
+        </nav> 
 
-            
-        </div> 
         <div class="content">
-            <p class="par">The Placement Prediction App is a cutting-edge tool designed to empower students 
-                 and job<br> seekers in navigating the competitive job market. Leveraging advanced algorithms,
-                  the app<br> analyzes resumes, academic performance, and industry trends to predict the likelihood 
-                  of <br>successful job placements. Users receive personalized recommendations for skill enhancement<br>
-                   and educational paths, ensuring alignment with current market demands. The app also provides<br> insights
-                    into company hiring patterns, interview preparation tips, and real-time notifications for <br>relevant 
-                    job opportunities. With a user-friendly interface and seamless navigation, this app<br> aims to revolutionize
-                     career planning by offering data-driven predictions and actionable<br> insights, ultimately enhancing
-                      individuals' employability and success in securing their<br> desired placements.</p>
+            <!-- Wrapped the text in a 'text-card' div so we can put a nice glass background behind it -->
+            <div class="text-card">
+                <p class="par">The Placement Prediction App is a cutting-edge tool designed to empower students and job seekers in navigating the competitive job market. Leveraging advanced algorithms, the app analyzes resumes, academic performance, and industry trends to predict the likelihood of successful job placements. Users receive personalized recommendations for skill enhancement and educational paths, ensuring alignment with current market demands. The app also provides insights into company hiring patterns, interview preparation tips, and real-time notifications for relevant job opportunities. With a user-friendly interface and seamless navigation, this app aims to revolutionize career planning by offering data-driven predictions and actionable insights, ultimately enhancing individuals' employability and success in securing their desired placements.</p>
+            </div>
+        </div>
+    </div> <!-- Closed the .main div correctly -->
 
-                
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <!-- Updated to the modern Ionicons script -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
